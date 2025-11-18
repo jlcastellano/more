@@ -109,7 +109,7 @@
 
             <h3>Declaración de una clase genérica:</h3>
             <div class="code-block">
-public class Contenedor<T> {
+<pre><code>public class Contenedor&lt;T&gt; {
     private T contenido;
     
     public void setContenido(T contenido) {
@@ -119,7 +119,7 @@ public class Contenedor<T> {
     public T getContenido() {
         return contenido;
     }
-}</div>
+}</code></pre></div>
 
             <h3>Convenciones de nomenclatura comunes:</h3>
             <ul>
@@ -136,19 +136,19 @@ public class Contenedor<T> {
 
             <h3>Ejemplo básico:</h3>
             <div class="code-block">
-// Crear instancia con tipo específico
-Contenedor<String> contenedorString = new Contenedor<>();
+<pre><code>// Crear instancia con tipo específico
+Contenedor&lt;String&gt; contenedorString = new Contenedor&lt;&gt;();
 contenedorString.setContenido("Hola Mundo");
 String contenido = contenedorString.getContenido(); // No necesita casting
 
 // Otro tipo
-Contenedor<Integer> contenedorInt = new Contenedor<>();
+Contenedor&lt;Integer&gt; contenedorInt = new Contenedor&lt;&gt;();
 contenedorInt.setContenido(42);
-int numero = contenedorInt.getContenido();</div>
+int numero = contenedorInt.getContenido();</code></pre></div>
 
             <h3>Múltiples parámetros de tipo:</h3>
             <div class="code-block">
-public class Par<K, V> {
+<pre><code>public class Par&lt;K, V&gt; {
     private K clave;
     private V valor;
     
@@ -159,7 +159,7 @@ public class Par<K, V> {
     
     public K getClave() { return clave; }
     public V getValor() { return valor; }
-}</div>
+}</code></pre></div>
         </div>
 
         <div class="section">
@@ -167,28 +167,28 @@ public class Par<K, V> {
 
             <h3>Upper Bounded Wildcards:</h3>
             <div class="code-block">
-// Acepta Number y sus subclases
-public void procesarNumeros(List<? extends Number> lista) {
+<pre><code>// Acepta Number y sus subclases
+public void procesarNumeros(List&lt;? extends Number&gt; lista) {
     for (Number n : lista) {
         System.out.println(n.doubleValue());
     }
-}</div>
+}</code></pre></div>
 
             <h3>Lower Bounded Wildcards:</h3>
             <div class="code-block">
-// Acepta Integer y sus superclases
-public void agregarEnteros(List<? super Integer> lista) {
+<pre><code>// Acepta Integer y sus superclases
+public void agregarEnteros(List&lt;? super Integer&gt; lista) {
     lista.add(42);
-}</div>
+}</code></pre></div>
 
             <h3>Restricción de tipo:</h3>
             <div class="code-block">
-// T debe ser subclase de Number
-public class Calculadora<T extends Number> {
+<pre><code>// T debe ser subclase de Number
+public class Calculadora&lt;T extends Number&gt; {
     public double sumar(T a, T b) {
         return a.doubleValue() + b.doubleValue();
     }
-}</div>
+}</code></pre></div>
         </div>
 
         <div class="section">
@@ -196,31 +196,31 @@ public class Calculadora<T extends Number> {
 
             <h3>Método genérico simple:</h3>
             <div class="code-block">
-public static <T> void imprimirArray(T[] array) {
+<pre><code>public static &lt;T&gt; void imprimirArray(T[] array) {
     for (T elemento : array) {
         System.out.println(elemento);
     }
-}</div>
+}</code></pre></div>
 
             <h3>Método con múltiples tipos:</h3>
             <div class="code-block">
-public static <T, U> Par<T, U> crearPar(T primero, U segundo) {
-    return new Par<>(primero, segundo);
-}</div>
+<pre><code>public static &lt;T, U&gt; Par&lt;T, U&gt; crearPar(T primero, U segundo) {
+    return new Par&lt;&gt;(primero, segundo);
+}</code></pre></div>
 
             <h3>Método con restricción de tipo:</h3>
             <div class="code-block">
-public static <T extends Comparable<T>> T encontrarMaximo(T[] array) {
+<pre><code>public static &lt;T extends Comparable&lt;T&gt;&gt; T encontrarMaximo(T[] array) {
     if (array == null || array.length == 0) return null;
     
     T max = array[0];
-    for (int i = 1; i < array.length; i++) {
-        if (array[i].compareTo(max) > 0) {
+    for (int i = 1; i &lt; array.length; i++) {
+        if (array[i].compareTo(max) &gt; 0) {
             max = array[i];
         }
     }
     return max;
-}</div>
+}</code></pre></div>
         </div>
 
         <div class="section">
@@ -228,29 +228,29 @@ public static <T extends Comparable<T>> T encontrarMaximo(T[] array) {
 
             <h3>Wildcard sin restricción:</h3>
             <div class="code-block">
-public void procesarLista(List<?> lista) {
+<pre><code>public void procesarLista(List&lt;?&gt; lista) {
     for (Object elemento : lista) {
         System.out.println(elemento);
     }
-}</div>
+}</code></pre></div>
 
             <h3>Wildcard con límite superior:</h3>
             <div class="code-block">
-public double sumarLista(List<? extends Number> lista) {
+<pre><code>public double sumarLista(List&lt;? extends Number&gt; lista) {
     double suma = 0.0;
     for (Number numero : lista) {
         suma += numero.doubleValue();
     }
     return suma;
-}</div>
+}</code></pre></div>
 
             <h3>Wildcard con límite inferior:</h3>
             <div class="code-block">
-public void llenarLista(List<? super Integer> lista) {
-    for (int i = 1; i <= 5; i++) {
+<pre><code>public void llenarLista(List&lt;? super Integer&gt; lista) {
+    for (int i = 1; i &lt;= 5; i++) {
         lista.add(i);
     }
-}</div>
+}</code></pre></div>
         </div>
 
         <div class="section">
@@ -258,8 +258,8 @@ public void llenarLista(List<? super Integer> lista) {
 
             <h3>Ejemplo 1: Stack Genérico</h3>
             <div class="code-block">
-public class Stack<T> {
-    private ArrayList<T> elementos = new ArrayList<>();
+<pre><code>public class Stack&lt;T&gt; {
+    private ArrayList&lt;T&gt; elementos = new ArrayList&lt;&gt;();
     
     public void push(T elemento) {
         elementos.add(elemento);
@@ -275,16 +275,16 @@ public class Stack<T> {
     public boolean isEmpty() {
         return elementos.isEmpty();
     }
-}</div>
+}</code></pre></div>
 
             <h3>Ejemplo 2: Par Ordenado</h3>
             <div class="code-block">
-public class ParOrdenado<T extends Comparable<T>> {
+<pre><code>public class ParOrdenado&lt;T extends Comparable&lt;T&gt;&gt; {
     private T primero;
     private T segundo;
     
     public ParOrdenado(T primero, T segundo) {
-        if (primero.compareTo(segundo) <= 0) {
+        if (primero.compareTo(segundo) &lt;= 0) {
             this.primero = primero;
             this.segundo = segundo;
         } else {
@@ -295,18 +295,18 @@ public class ParOrdenado<T extends Comparable<T>> {
     
     public T getPrimero() { return primero; }
     public T getSegundo() { return segundo; }
-}</div>
+}</code></pre></div>
 
             <h3>Ejemplo 3: Repositorio Genérico</h3>
             <div class="code-block">
-public interface Repository<T, ID> {
+<pre><code>public interface Repository&lt;T, ID&gt; {
     T findById(ID id);
     void save(T entity);
     void delete(ID id);
-    List<T> findAll();
+    List&lt;T&gt; findAll();
 }
 
-public class UserRepository implements Repository<User, Long> {
+public class UserRepository implements Repository&lt;User, Long&gt; {
     @Override
     public User findById(Long id) {
         // Implementación
@@ -323,10 +323,10 @@ public class UserRepository implements Repository<User, Long> {
     }
     
     @Override
-    public List<User> findAll() {
+    public List&lt;User&gt; findAll() {
         // Implementación
     }
-}</div>
+}</code></pre></div>
         </div>
 
         <div class="section">
